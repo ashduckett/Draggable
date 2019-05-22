@@ -13,7 +13,7 @@ class Draggable {
         return this.element;
     }
 
-    constructor(height, width, x, y, options) {
+    constructor(width, height, x, y, options) {
         this.element = document.createElement('div');
         this.element.style.position = 'absolute';
         this.element.style.width = width + 'px';
