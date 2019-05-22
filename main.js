@@ -44,7 +44,7 @@ class Draggable {
             const x = this.localXDown = e.clientX  - rect.left;
             const y = this.localYDown = e.clientY  - rect.top;
 
-            if (this.useConstraints && !(x >= this.constraintRect.left && x <= this.constraintRect.right && y <= this.constraintRect.bottom && y >= this.constraintRect.top)) {
+            if (this.useConstraints && (x >= this.constraintRect.left && x <= this.constraintRect.right && y <= this.constraintRect.bottom && y >= this.constraintRect.top)) {
                 this.isDragging = true;
             } else if (this.useConstraints == false) {
                 this.isDragging = true;
