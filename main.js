@@ -35,6 +35,10 @@ class Draggable {
             this.onDragEnd = options.onDragEnd;
         }
 
+        if (options.onDrag) {
+            this.onDrag = options.onDrag;
+        }
+
 
         this.setupEventHandlers();
     }
@@ -59,21 +63,23 @@ class Draggable {
             } else if (this.useConstraints == false) {
                 this.isDragging = true;
             }
-         
-
         });
 
         document.addEventListener('mousemove', (e) => {
             if (this.isDragging) {
                 this.element.style.left = e.clientX - this.localXDown + 'px';
                 this.element.style.top = e.clientY - this.localYDown + 'px';
+            
+                if (this.onDrag && typeof this.onDrag === 'function') {
+                    this.onDrag(e);
+                }
             }
         })
 
         document.addEventListener('mouseup', () => {
             if (this.onDragEnd && typeof this.onDragEnd === 'function') {
                 // Maybe this should only fire if the element has actually been moved otherwise it will fire just on clicking.
-                this.onDragEnd();
+                this.onDragEnd(e);
             }
             this.isDragging = false
             
@@ -85,8 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const d = new Draggable(100, 100, 100,  100, {
         useConstraints: true,
         constraintRect: new Rect(50, 100, 100, 0),
-        onDragEnd: () => {
+        onDragEnd: (e) => {
             d.setLocation(0, 0)
+        },
+        onDrag: (e) => {
+            console.log(e.clientX)
         }
     });
     document.body.appendChild(d.getElement());
