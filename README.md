@@ -1,10 +1,10 @@
-== Draggable Class ==
+# Draggable Class
 
 This is going to be part of a much larger project called Shout which will allow for the streaming and scheduling of social media posts. Being able to drag and drop is an important part of the functionality for this first module so I want to get it right so I can use it easily later on. Eventually this will become a React component.
 
 Instances of this class contain a div element that has dragging and dropping enabled. It's all done in plain old JavaScript so there are no dependencies.
 
-= Usage =
+## Usage
 
 ```
 const draggableElement = new Draggable(100, 100, 100,  100, {
