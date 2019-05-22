@@ -48,6 +48,10 @@ class Draggable {
         this.element.style.top = y + 'px';
     }
 
+    getRect() {
+        return this.element.getBoundingClientRect()
+    }
+
     setupEventHandlers() {
         const el = this.element;
 
@@ -76,7 +80,7 @@ class Draggable {
             }
         })
 
-        document.addEventListener('mouseup', () => {
+        document.addEventListener('mouseup', (e) => {
             if (this.onDragEnd && typeof this.onDragEnd === 'function') {
                 // Maybe this should only fire if the element has actually been moved otherwise it will fire just on clicking.
                 this.onDragEnd(e);
@@ -95,7 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
             d.setLocation(0, 0)
         },
         onDrag: (e) => {
-            console.log(e.clientX)
+            // console.log(e.clientX)
+            console.log(d.getRect())
+
         }
     });
     document.body.appendChild(d.getElement());
