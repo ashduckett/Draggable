@@ -15,7 +15,7 @@ const draggableElement = new Draggable(100, 100, 100,  100, {
 document.body.appendChild(draggableElement.getElement());
 ```
 
-This code creates a new draggable. The first four parameters are there to allow you to specify the height, width, x location and y location respectively.
+This code creates a new draggable. The first four parameters are there to allow you to specify the width, height, x location and y location respectively.
 
 The fourth argument should be optional and allows you to specify that you want the draggable area to be contained within the specified `Rect` and nowhere outside of it. Further options will follow.
 
